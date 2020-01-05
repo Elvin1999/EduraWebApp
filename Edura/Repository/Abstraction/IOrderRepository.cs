@@ -2,13 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Edura.Repository.Abstraction
 {
-    public interface IProductRepository:IRepository<Product>
+   public interface IOrderRepository:IRepository<Order>
     {
-        List<Product> GetTop5Products();
     }
 }

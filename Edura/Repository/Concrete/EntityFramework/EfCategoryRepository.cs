@@ -8,47 +8,20 @@ using System.Threading.Tasks;
 
 namespace Edura.Repository.Concrete.EntityFramework
 {
-    public class EfCategoryRepository : ICategoryRepository
+    public class EfCategoryRepository : EfRepository<Category>, ICategoryRepository
     {
-        private EduraContext context;
-
-        public EfCategoryRepository(EduraContext context)
+        
+        public EfCategoryRepository(EduraContext context):base(context)
         {
-            this.context = context;
         }
-        public void Add(Category entity)
+        public EduraContext EduraContext { get {
+                return context as EduraContext;
+            } }
+        public Category GetByName(string name)
         {
-            context.Category.Add(entity);
-        }
-
-        public void Delete(Category entity)
-        {
-            context.Category.Remove(entity);
-        }
-
-        public void Edit(Category entity)
-        {
-            context.Entry<Category>(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-        }
-
-        public IQueryable<Category> Find(Expression<Func<Category, bool>> predicate)
-        {
-            return context.Category.Where(predicate);
-        }
-
-        public IQueryable<Category> GetAll()
-        {
-            return context.Category;
-        }
-
-        public Category GetById(int id)
-        {
-            return context.Category.FirstOrDefault(i => i.CategoryId == id);
-        }
-
-        public void Save()
-        {
-            context.SaveChanges();
+            return EduraContext.Category
+                .Where(i => i.CategoryName == name)
+                .FirstOrDefault();
         }
     }
 }

@@ -9,6 +9,6 @@ namespace Edura.Repository.Abstraction
 {
    public interface ICategoryRepository:IRepository<Category>
     {
-      
+        Category GetByName(string name);
     }
 }

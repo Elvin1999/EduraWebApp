@@ -28,8 +28,8 @@ namespace Edura
             services.AddDbContext<EduraContext>
           (options => options.UseSqlServer(Microsoft.Extensions.Configuration.ConfigurationExtensions.GetConnectionString(configuration, "DefaultConnection")));
             services.AddTransient<IProductRepository, EfProductRepository>();
+            services.AddTransient<ICategoryRepository, EfCategoryRepository>();
             services.AddMvc();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
