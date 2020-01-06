@@ -1,10 +1,8 @@
 ﻿using Edura.Repository.Abstraction;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace Edura.Repository.Concrete.EntityFramework
 {
@@ -34,12 +32,12 @@ namespace Edura.Repository.Concrete.EntityFramework
 
         public IQueryable<T> Find(Expression<Func<T, bool>> predicate)
         {
-           return context.Set<T>().Where(predicate);
+            return context.Set<T>().Where(predicate);
         }
 
         public IQueryable<T> GetAll()
         {
-           return context.Set<T>();
+            return context.Set<T>();
         }
 
         public T GetById(int id)

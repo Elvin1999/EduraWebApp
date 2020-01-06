@@ -1,21 +1,19 @@
 ﻿using Edura.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Edura.Repository.Concrete.EntityFramework
 {
-    public class EduraContext:DbContext
+    public class EduraContext : DbContext
     {
-        public EduraContext(DbContextOptions<EduraContext> options):base(options)
+        public EduraContext(DbContextOptions<EduraContext> options) : base(options)
         {
 
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<ProductAttribute> ProductAttributes { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProductCategory>()

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Edura.Repository.Abstraction;
+﻿using Edura.Repository.Abstraction;
 using Edura.Repository.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,8 +37,9 @@ namespace Edura
             }
             app.UseStaticFiles();
             app.UseStatusCodePages();
-           // app.UseAuthentication();
-            app.UseMvc(routes => {
+            // app.UseAuthentication();
+            app.UseMvc(routes =>
+            {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}"

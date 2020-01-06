@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace Edura
 {
@@ -19,7 +12,7 @@ namespace Edura
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseDefaultServiceProvider(options=>options.ValidateScopes=false)
+            .UseDefaultServiceProvider(options => options.ValidateScopes = false)
                 .UseStartup<Startup>();
     }
 }

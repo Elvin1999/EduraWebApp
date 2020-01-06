@@ -1,14 +1,13 @@
 ﻿using Edura.Entities;
-using System;
+using Edura.Models;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace Edura.Repository.Abstraction
 {
-   public interface ICategoryRepository:IRepository<Category>
+    public interface ICategoryRepository : IRepository<Category>
     {
         Category GetByName(string name);
+        IEnumerable<CategoryModel> GetCategoryWithCount();
     }
 }

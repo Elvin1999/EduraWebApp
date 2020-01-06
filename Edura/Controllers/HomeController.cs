@@ -1,13 +1,10 @@
 ﻿using Edura.Repository.Abstraction;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Edura.Controllers
 {
-    public class HomeController:Controller
+    public class HomeController : Controller
     {
         private IProductRepository productRepository;
         private IUnitOfWork unitOfWork;
