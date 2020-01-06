@@ -137,7 +137,7 @@ namespace Edura.Repository.Concrete.EntityFramework
                     new ProductAttribute(){ Attribute="Hard Disk", Value="1 TB",Product=products[3] },
                     new ProductAttribute(){ Attribute="Color", Value="Black",Product=products[3] },
                 };
-                context.AddRange();
+                context.AddRange(attributes);
                 context.SaveChanges();
             }
         }
