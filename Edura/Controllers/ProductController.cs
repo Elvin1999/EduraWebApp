@@ -12,7 +12,7 @@ namespace Edura.Controllers
     public class ProductController : Controller
     {
         private IProductRepository productRepository;
-
+        public int PageSize = 2;
         public ProductController(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
@@ -21,6 +21,19 @@ namespace Edura.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult List(string category,int page=1)
+        {
+            var products = productRepository.GetAll();
+            if (!string.IsNullOrEmpty(category))
+            {
+                products = products
+                    .Include(i => i.ProductCategories)
+                    .ThenInclude(i => i.Category)
+                    .Where(i => i.ProductCategories.Any(a => a.Category.CategoryName == category));
+            }
+            products.Skip((page-1)*PageSize).Take(PageSize);
+            return View(products);
         }
         public IActionResult Details(int id)
         {
