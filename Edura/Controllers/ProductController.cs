@@ -32,7 +32,7 @@ namespace Edura.Controllers
                     .ThenInclude(i => i.Category)
                     .Where(i => i.ProductCategories.Any(a => a.Category.CategoryName == category));
             }
-            products.Skip((page-1)*PageSize).Take(PageSize);
+            products=products.Skip((page-1)*PageSize).Take(PageSize);
             return View(products);
         }
         public IActionResult Details(int id)
