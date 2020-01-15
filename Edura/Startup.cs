@@ -26,6 +26,8 @@ namespace Edura
             services.AddTransient<ICategoryRepository, EfCategoryRepository>();
             services.AddTransient<IUnitOfWork, EfUnitOfWork>();
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +39,7 @@ namespace Edura
             }
             app.UseStaticFiles();
             app.UseStatusCodePages();
+            app.UseSession();
             // app.UseAuthentication();
             app.UseMvc(routes =>
             {
