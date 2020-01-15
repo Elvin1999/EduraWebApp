@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿@model ProductListModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -40,7 +40,7 @@
                         <div class="product-results">
                             <div class="col-xs-8">
                                 <p class="woocommerce-result-count">
-                                    There are @Model.Count() products in store . . .
+                                    There are @Model.PageInfo.TotalItems products in store . . .
                                 </p>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                 </div>
 
 
-                @foreach (var item in Model)
+                @foreach (var item in Model.Products)
                 {
 
                     <div class="col-md-4 wow fadeInUp">
@@ -71,7 +71,9 @@
 
 
             </div>
+            <div page-model="@Model.PageInfo" page-action="List">
 
+            </div>
         </div>
         <!-- right column end -->
 
